@@ -3,64 +3,597 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prof. Haroldo Candal - UERJ</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Ensino - Prof. Haroldo Candal</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Seleciona o H1 que está dentro do header */
-        header h1 {
-            /*
-               O tamanho padrão de um H1 é grande (geralmente 2em).
-               Vamos definir para 1.5rem (que é aproximadamente 24px).
-               Se ainda estiver grande, tente 1.2rem.
-            */
-            font-size: 1.0rem;
+        /* --- VARIÁVEIS (MESMA PALETA DO SITE) --- */
+        :root {
+            --col-dark-navy: #0E2C40;
+            --col-deep-teal: #1A4A5A;
+            --col-teal:      #148D8D;
+            --col-sage:      #C1E1A7;
+            --col-gold:      #EFBC75;
+            --bg-body:       #f0f4f5;
+            --white:         #ffffff;
+            --text-main:     #2c3e50;
+            --text-light:    #666666;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(14, 44, 64, 0.08);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .nav-logo {
+            font-weight: 800; font-size: 1.1rem; color: var(--col-dark-navy);
+            border: 2px solid var(--col-teal); padding: 5px 12px; border-radius: 6px;
+        }
+        .nav-links a {
+            text-decoration: none; color: var(--col-deep-teal); margin-left: 25px;
+            font-weight: 600; font-size: 0.9rem;
+        }
+
+        /* --- VÍDEO HEADER --- */
+        .video-header {
+            position: relative;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+            background-color: var(--col-dark-navy);
+        }
+
+        .video-header video {
+            position: absolute;
+            top: 50%; left: 50%;
+            min-width: 100%; min-height: 100%;
+            width: auto; height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            object-fit: cover;
+            opacity: 0.6;
+        }
+
+        .header-content {
+            position: relative; z-index: 2; padding: 20px;
+        }
+
+        .header-content h1 {
+            font-size: 3rem; font-weight: 700; margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .header-content .divider {
+            width: 80px; height: 4px; background-color: var(--col-teal); margin: 0 auto 15px;
+        }
+
+        /* --- CONTAINER PRINCIPAL --- */
+        .container {
+            max-width: 1200px; margin: 40px auto; padding: 0 20px;
+        }
+
+        /* --- SISTEMA DE ABAS (TABS) --- */
+        .tabs-container {
+            background: var(--white); border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+
+        .tabs-nav {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            background: #f8f9fa; border-bottom: 1px solid #e0e0e0; padding: 10px; gap: 10px;
+        }
+
+        .tab-btn {
+            background: var(--white); border: 1px solid #ddd;
+            padding: 15px; border-radius: 8px; cursor: pointer;
+            text-align: center; transition: all 0.3s;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+        }
+
+        .tab-btn:hover {
+            background: rgba(20, 141, 141, 0.1); border-color: var(--col-teal); color: var(--col-teal);
+        }
+
+        .tab-btn.active {
+            background: var(--col-dark-navy); color: var(--white); border-color: var(--col-dark-navy);
+            transform: scale(1.02); box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .tab-content {
+            padding: 40px; display: none;
+        }
+        .tab-content.active {
+            display: block; animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- CONTEÚDO DAS ABAS --- */
+        .subject-header {
+            display: flex; gap: 20px; align-items: center; margin-bottom: 30px;
+        }
+        .subject-icon { font-size: 3rem; }
+        .subject-title h2 { font-size: 2rem; color: var(--col-dark-navy); margin-bottom: 5px; }
+        .subject-desc { font-size: 1.1rem; color: #666; }
+
+        .content-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+        }
+        @media (max-width: 900px) { .content-grid { grid-template-columns: 1fr; } }
+
+        /* Caixas de Informação */
+        .info-box {
+            padding: 25px; border-radius: 12px; margin-bottom: 20px; border: 1px solid;
+        }
+        .box-blue { background: #f0f8ff; border-color: #bee3f8; }
+        .box-green { background: #f0fff4; border-color: #c6f6d5; }
+        .box-indigo { background: #eef2ff; border-color: #c7d2fe; }
+        .box-gray { background: #f9fafb; border-color: #e5e7eb; }
+
+        .box-title {
+            display: flex; align-items: center; gap: 10px; font-weight: 700;
+            font-size: 1.2rem; margin-bottom: 15px; color: var(--col-dark-navy);
+        }
+
+        /* Listas */
+        .info-list { display: flex; flex-direction: column; gap: 10px; }
+        .list-item-card {
+            background: var(--white); padding: 15px; border-radius: 6px;
+            border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 0.95rem;
+        }
+        .date-row {
+            display: flex; justify-content: space-between; padding: 10px;
+            background: var(--white); border-radius: 6px; border-bottom: 1px solid #eee;
+        }
+
+        /* --- MATERIAIS LISTA --- */
+        .materials-list { margin-top: 20px; display: flex; flex-direction: column; gap: 15px; }
+
+        .material-item {
+            background: var(--white); border: 1px solid #e0e0e0; border-left: 4px solid var(--col-teal);
+            border-radius: 6px; padding: 15px 20px;
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 15px;
+            transition: transform 0.2s;
+        }
+        .material-item:hover { transform: translateX(5px); }
+        .material-item h4 { color: var(--col-dark-navy); margin: 0; min-width: 200px; }
+
+        .material-links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        .link-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 15px; border-radius: 4px; text-decoration: none;
+            font-size: 0.85rem; font-weight: 600; border: 1px solid; transition: all 0.2s;
+        }
+
+        /* Botões de Ação */
+        .btn-available-blue { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; }
+        .btn-available-blue:hover { background: #dbeafe; }
+
+        .btn-available-teal { background: #f0fdfa; border-color: #ccfbf1; color: #0f766e; }
+        .btn-available-teal:hover { background: #ccfbf1; }
+
+        .btn-disabled { background: #f3f4f6; border-color: #e5e7eb; color: #9ca3af; cursor: not-allowed; }
+
+        /* Botão Principal */
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--col-teal); color: white; padding: 10px 20px;
+            border-radius: 6px; text-decoration: none; font-weight: 600;
+            transition: background 0.3s;
+        }
+        .btn-primary:hover { background: var(--col-deep-teal); }
     </style>
-    </head>
+</head>
 <body>
-    <header>
-        <div class="container header-content">
-            <h1>Prof. Haroldo Candal</h1>
-            <nav>
-                <a href="index.html">Início</a> 
-                <a href="ensino.html">Ensino</a>
-                <a href="https://lqtsm.figma.site" target="_blank">Pesquisa</a>
-                <a href="https://conexaouerj.figma.site" target="_blank">Extensão</a>
-                <a href="contato.html">Contato</a>
-            </nav>
+
+    <nav>
+        <div class="nav-logo">HC</div>
+        <div class="nav-links">
+            <a href="index.html">Início</a>
+            <a href="ensino.html" style="color: var(--col-teal);">Ensino</a>
+            <a href="https://lqtsm.figma.site" target="_blank">Pesquisa</a>
+            <a href="https://conexaouerj.figma.site" target="_blank">Extensão</a>
+            <a href="contato.html">Contato</a>
+        </div>
+    </nav>
+
+    <header class="video-header">
+        <video autoplay loop muted playsinline>
+            <source src="https://i.imgur.com/V8QPsf9.mp4" type="video/mp4">
+        </video>
+        <div class="header-content">
+            <div style="font-size: 3rem; margin-bottom: 10px;">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+            <h1>Ensino</h1>
+            <div class="divider"></div>
+            <p>Recursos, materiais de aula e cronogramas das disciplinas.</p>
         </div>
     </header>
 
     <main class="container">
-        <section class="intro">
-            <h2>Bem-vindo</h2>
-            <p>Site oficial do Prof. Haroldo Candal, docente do Departamento de Físico-Química da Universidade do Estado do Rio de Janeiro (UERJ).</p>
-            <p>Aqui você encontrará informações sobre atividades de ensino, pesquisa e extensão.</p>
-        </section>
+        
+        <div class="tabs-container">
+            <div class="tabs-nav">
+                <div class="tab-btn active" onclick="openTab('termodinamica', this)">
+                    <i class="fa-solid fa-temperature-half" style="font-size: 1.5rem;"></i>
+                    <span>Termodinâmica</span>
+                </div>
+                <div class="tab-btn" onclick="openTab('eletricidade', this)">
+                    <i class="fa-solid fa-bolt" style="font-size: 1.5rem;"></i>
+                    <span>Eletricidade</span>
+                </div>
+                <div class="tab-btn" onclick="openTab('quantica', this)">
+                    <i class="fa-solid fa-atom" style="font-size: 1.5rem;"></i>
+                    <span>Química Quântica</span>
+                </div>
+                <div class="tab-btn" onclick="openTab('quimicaGeral', this)">
+                    <i class="fa-solid fa-flask" style="font-size: 1.5rem;"></i>
+                    <span>Química Geral</span>
+                </div>
+            </div>
 
-        <section class="grid-links">
-            <div class="card">
-                <h3>Ensino</h3>
-                <p>Materiais didáticos, listas e cronogramas.</p>
-                <button onclick="alert('Página em construção')" class="btn">Acessar Materiais</button>
+            <div id="termodinamica" class="tab-content active">
+                <div class="subject-header">
+                    <div class="subject-icon">🌡️</div>
+                    <div class="subject-title">
+                        <h2>Termodinâmica</h2>
+                        <p class="subject-desc">Estudo das leis fundamentais que governam as transformações de energia e matéria.</p>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="left-col">
+                        <div class="info-box box-blue">
+                            <div class="box-title"><i class="fa-solid fa-book"></i> Bibliografia</div>
+                            <div class="info-list">
+                                <div class="list-item-card">ATKINS , P.; DE PAULA, J. Físico química: volume 1. [s.l.] Ltc, 2017.</div>
+                                <div class="list-item-card">LEVINE, I. N. Físico Química. [s.l.] Ltc, 1970.</div>
+                            </div>
+                        </div>
+                        <div class="info-box box-green">
+                            <div class="box-title"><i class="fa-solid fa-calendar-days"></i> Avaliações</div>
+                            <div class="info-list">
+                                <div class="date-row"><span>P1:</span> <strong>01/10/2025 - 07:00</strong></div>
+                                <div class="date-row"><span>P2:</span> <strong>28/11/2025 - 08:50</strong></div>
+                                <div class="date-row"><span>PR:</span> <strong>03/12/2025 - 07:00</strong></div>
+                                <div class="date-row"><span>PF:</span> <strong>10/12/2025 - 07:00</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-col">
+                        <div class="info-box box-indigo">
+                            <div class="box-title"><i class="fa-solid fa-tablet-screen-button"></i> Caderno Digital</div>
+                            <p style="margin-bottom: 15px; font-size: 0.9rem;">Acesse o caderno completo com anotações de aula.</p>
+                            <a href="https://web.goodnotes.com/s/fMnXbsgyngGqm7On4V88ON" target="_blank" class="btn-primary" style="background: #6b46c1;">
+                                Acessar Caderno Goodnotes <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-box box-gray" style="margin-top: 20px;">
+                    <div class="box-title"><i class="fa-solid fa-layer-group"></i> Materiais por Tópico</div>
+                    <div class="materials-list">
+                        
+                        <div class="material-item">
+                            <h4>1. Gases Perfeitos</h4>
+                            <div class="material-links">
+                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em breve)</span>
+                                <a href="https://lqtsm.notion.site/Lista-de-Exerc-cios-Gases-Perfeitos-1878e483182a806395f4f004931b1ab0?pvs=74" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                        <div class="material-item">
+                            <h4>2. Gases Reais</h4>
+                            <div class="material-links">
+                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em breve)</span>
+                                <a href="https://lqtsm.notion.site/Lista-de-Exerc-cios-Gases-Reais-1878e483182a806391e1eb983dfb5b6c?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                        <div class="material-item">
+                            <h4>3. Primeira Lei e Entalpia</h4>
+                            <div class="material-links">
+                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em breve)</span>
+                                <a href="https://lqtsm.notion.site/Lista-de-Exerc-cios-Lei-Zero-Primeira-Lei-e-Entalpia-18a8e483182a80fd8b72f8cc8de44786?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                        <div class="material-item">
+                            <h4>4. Termoquímica</h4>
+                            <div class="material-links">
+                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em breve)</span>
+                                <a href="https://lqtsm.notion.site/Lista-de-Exerc-cios-Termoqu-mica-1d38e483182a80aa9334ffff9103adb0?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                        <div class="material-item">
+                            <h4>5. Entropia e Segunda Lei</h4>
+                            <div class="material-links">
+                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em breve)</span>
+                                <a href="https://lqtsm.notion.site/Lista-de-Exerc-cios-Segunda-Lei-1e18e483182a80d29d6eda0412e8094b?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                        <div class="material-item">
+                            <h4>6. Terceira Lei</h4>
+                            <div class="material-links">
+                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em breve)</span>
+                                <a href="https://lqtsm.notion.site/Lista-de-Exerc-cios-Terceira-Lei-e-Entropias-Convencionais-1ef8e483182a80caacc0e6c405b227ee?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                        <div class="material-item">
+                            <h4>7. Energia Livre</h4>
+                            <div class="material-links">
+                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em breve)</span>
+                                <a href="https://lqtsm.notion.site/Lista-de-Exerc-cios-Energia-Livre-1f78e483182a80c78047f4ac0df2b80a?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                        <div class="material-item">
+                            <h4>8. Relações Termodinâmicas</h4>
+                            <div class="material-links">
+                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em breve)</span>
+                                <a href="https://lqtsm.notion.site/Rela-es-Termodin-micas-2068e483182a80e29586ffe6500ecd58?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                         <div class="material-item">
+                            <h4>9. Equilíbrio de Fases</h4>
+                            <div class="material-links">
+                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em breve)</span>
+                                <a href="https://lqtsm.notion.site/Equil-brio-de-Fases-20e8e483182a802695e5f10ed55eb643?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                        <div class="material-item">
+                            <h4>10. Equilíbrio Químico</h4>
+                            <div class="material-links">
+                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em breve)</span>
+                                <a href="https://lqtsm.notion.site/Equil-brio-Qu-mico-20e8e483182a806ab5a3d04c9eb20fc9?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <h3>Pesquisa (LQTSM)</h3>
-                <p>Laboratório de Química Teórica e Simulação Molecular.</p>
-                <a href="https://lqtsm.figma.site" target="_blank" class="btn">Visitar Site</a>
+
+            <div id="eletricidade" class="tab-content">
+                <div class="subject-header">
+                    <div class="subject-icon">⚡</div>
+                    <div class="subject-title">
+                        <h2>Eletricidade</h2>
+                        <p class="subject-desc">Princípios fundamentais da eletrostática, eletrodinâmica e suas aplicações.</p>
+                    </div>
+                </div>
+                
+                <div class="content-grid">
+                    <div class="left-col">
+                        <div class="info-box box-blue">
+                            <div class="box-title"><i class="fa-solid fa-book"></i> Bibliografia</div>
+                            <div class="info-list">
+                                <div class="list-item-card">HALLIDAY, D. Fundamentos De Física - Vol 3. 12. ed.</div>
+                                <div class="list-item-card">JEWETT, J. W. JR. Física para cientistas e engenheiros 3.</div>
+                            </div>
+                        </div>
+                        <div class="info-box box-green">
+                            <div class="box-title"><i class="fa-solid fa-calendar-days"></i> Avaliações</div>
+                            <div class="info-list">
+                                <div class="date-row"><span>P1:</span> <strong>08/10/2025 - 18:00</strong></div>
+                                <div class="date-row"><span>PR:</span> <strong>15/12/2025 - 18:00</strong></div>
+                                <div class="date-row"><span>PF:</span> <strong>17/12/2025 - 18:00</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-col">
+                         <div class="info-box box-indigo">
+                            <div class="box-title"><i class="fa-solid fa-tablet-screen-button"></i> Caderno Digital</div>
+                            <a href="https://web.goodnotes.com/s/pKC3GfC8Y60sMZnMoI9yEY#page-51" target="_blank" class="btn-primary" style="background: #6b46c1;">Acessar Caderno <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box box-gray" style="margin-top: 20px;">
+                    <div class="box-title">Materiais por Tópico</div>
+                    <div class="materials-list">
+                        
+                        <div class="material-item">
+                            <h4>1. Lei de Coulomb e Campo Elétrico</h4>
+                            <div class="material-links">
+                                <a href="https://drive.google.com/file/d/1t01Kr3DZS5do8kSpDdbResexYaOInw7B/view" target="_blank" class="link-btn btn-available-blue"><i class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
+                                <a href="https://lqtsm.notion.site/Lei-de-Coulomb-e-Campo-El-trico-20a8e483182a80bb825dd4a386f8d7f6?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                        <div class="material-item">
+                            <h4>2. Fluxo Elétrico e Lei de Gauss</h4>
+                            <div class="material-links">
+                                <a href="https://drive.google.com/file/d/1HlR5luLxjVkm9zEdG5jFX32Er5At_2EC/view" target="_blank" class="link-btn btn-available-blue"><i class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
+                                <a href="https://lqtsm.notion.site/Fluxo-El-trico-e-Lei-de-Gauss-2138e483182a801a8f6ecd3e24bc0925?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                        <div class="material-item">
+                            <h4>3. Potencial Elétrico</h4>
+                            <div class="material-links">
+                                <a href="https://drive.google.com/file/d/11bLZdlYlZuDSV6vk7Rv1yYYwxkZB6fse/view" target="_blank" class="link-btn btn-available-blue"><i class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
+                                <a href="https://lqtsm.notion.site/Potencial-El-trico-2138e483182a80c89f6aca8539bea381?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                        <div class="material-item">
+                            <h4>4. Capacitores e Dielétricos</h4>
+                            <div class="material-links">
+                                <a href="https://drive.google.com/file/d/1yZ-JniXTQFOm1GPUdYGAoat97ceYn9Vp/view" target="_blank" class="link-btn btn-available-blue"><i class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
+                                <a href="https://lqtsm.notion.site/Capacitores-e-Diel-tricos-21e8e483182a801e915bca7f78fccaac?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                        <div class="material-item">
+                            <h4>5. Corrente, Resistência e Potência</h4>
+                            <div class="material-links">
+                                <a href="https://drive.google.com/file/d/1E63ACHEjibUxCuOs6m-JOmLlmXfZqnEw/view?usp=sharing" target="_blank" class="link-btn btn-available-blue"><i class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
+                                <a href="https://lqtsm.notion.site/Corrente-Resist-ncia-e-Pot-ncia-21e8e483182a8026b562ed28de1ba9cc?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                        <div class="material-item">
+                            <h4>6. Circuitos Simples e RC</h4>
+                            <div class="material-links">
+                                <a href="https://drive.google.com/file/d/1k307mpzh8OVhI66LHxwNJ_A9DUKPgerH/view?usp=sharing" target="_blank" class="link-btn btn-available-blue"><i class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
+                                <a href="https://lqtsm.notion.site/Circuitos-Simples-e-Circuitos-RC-21f8e483182a807cbcdfc48edc39b108?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                        <div class="material-item">
+                            <h4>7. Campos Magnéticos</h4>
+                            <div class="material-links">
+                                <a href="https://drive.google.com/file/d/1cdzvdOuwexg10gTFDp6ECD5ouQHQ6-xG/view?usp=sharing" target="_blank" class="link-btn btn-available-blue"><i class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
+                                <a href="https://lqtsm.notion.site/Campo-Magn-tico-2788e483182a80d3a257f741de41f6e6?source=copy_link" target="_blank" class="link-btn btn-available-teal"><i class="fa-solid fa-list-check"></i> Exercícios</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <h3>Extensão</h3>
-                <p>Projeto Conexão UERJ e atividades comunitárias.</p>
-                <a href="https://conexaouerj.figma.site" target="_blank" class="btn">Conhecer</a>
+
+            <div id="quantica" class="tab-content">
+                <div class="subject-header">
+                    <div class="subject-icon">⚛️</div>
+                    <div class="subject-title">
+                        <h2>Química Quântica</h2>
+                        <p class="subject-desc">Introdução aos princípios da mecânica quântica aplicados a sistemas químicos.</p>
+                    </div>
+                </div>
+                 <div class="content-grid">
+                    <div class="left-col">
+                        <div class="info-box box-blue">
+                            <div class="box-title"><i class="fa-solid fa-book"></i> Bibliografia</div>
+                            <div class="info-list">
+                                <div class="list-item-card">MCQUARRIE, D. A. Quantum chemistry. 2nd ed. 2008.</div>
+                                <div class="list-item-card">LEVINE, I. N. Quantum chemistry. 7th ed. 2014.</div>
+                            </div>
+                        </div>
+                         <div class="info-box box-green">
+                            <div class="box-title"><i class="fa-solid fa-calendar-days"></i> Avaliações</div>
+                            <div class="info-list">
+                                <div class="date-row"><span>P1:</span> <strong>22/09/2025 - 16:00</strong></div>
+                                <div class="date-row"><span>P2:</span> <strong>17/11/2025 - 16:00</strong></div>
+                                <div class="date-row"><span>PR:</span> <strong>01/12/2025 - 16:00</strong></div>
+                                <div class="date-row"><span>PF:</span> <strong>08/12/2025 - 16:00</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-box box-gray" style="margin-top: 20px;">
+                    <div class="box-title">Materiais por Tópico</div>
+                    
+                    <div class="materials-list">
+                        <div class="material-item"><h4>1. Surgimento da Teoria Quântica</h4><span class="link-btn btn-disabled">Em breve</span></div>
+                        <div class="material-item"><h4>2. Equação Clássica de Ondas</h4><span class="link-btn btn-disabled">Em breve</span></div>
+                        <div class="material-item"><h4>3. Equação de Schrödinger</h4><span class="link-btn btn-disabled">Em breve</span></div>
+                        <div class="material-item"><h4>4. Postulados e Princípios</h4><span class="link-btn btn-disabled">Em breve</span></div>
+                        <div class="material-item"><h4>5. Oscilador Harmônico</h4><span class="link-btn btn-disabled">Em breve</span></div>
+                        <div class="material-item"><h4>6. Rotor Rígido</h4><span class="link-btn btn-disabled">Em breve</span></div>
+                        <div class="material-item"><h4>7. Espécies Hidrogenoides</h4><span class="link-btn btn-disabled">Em breve</span></div>
+                        <div class="material-item"><h4>8. Métodos de Aproximação</h4><span class="link-btn btn-disabled">Em breve</span></div>
+                        <div class="material-item"><h4>9. Átomos Multieletrônicos</h4><span class="link-btn btn-disabled">Em breve</span></div>
+                        <div class="material-item"><h4>10. Ligação Química</h4><span class="link-btn btn-disabled">Em breve</span></div>
+                    </div>
+                </div>
             </div>
-        </section>
+
+            <div id="quimicaGeral" class="tab-content">
+                <div class="subject-header">
+                    <div class="subject-icon">🧪</div>
+                    <div class="subject-title">
+                        <h2>Química Geral</h2>
+                        <p class="subject-desc">Estudo dos princípios fundamentais da química: estrutura atômica, ligações, termodinâmica e cinética.</p>
+                    </div>
+                </div>
+
+                <div class="info-list" style="gap: 30px;">
+                    
+                    <div class="info-box box-blue">
+                        <div class="box-title"><i class="fa-solid fa-file-lines"></i> Lista de Exercícios Resolvida</div>
+                        <p style="margin-bottom: 20px;">Acesse todas as listas resolvidas no link abaixo.</p>
+                        <a href="https://web.goodnotes.com/s/pmfmaWhAxXXt1AOOwA3iO4" target="_blank" class="btn-primary" style="background: var(--col-primary);">
+                            <i class="fa-solid fa-eye"></i> Ver Lista Completa Resolvida
+                        </a>
+                    </div>
+
+                    <div class="info-box box-gray">
+                        <div class="box-title"><i class="fa-solid fa-video"></i> Gravações das Aulas de Exercícios</div>
+                        <p style="margin-bottom: 20px;">Assista às gravações das aulas com resolução passo a passo.</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                            <div class="material-item">
+                                <h5>Aula de Exercícios 1</h5>
+                                <a href="https://drive.google.com/file/d/1QQGifFpt9AMUw8Ywn_cMd2pzLKWkAGFO/view?usp=sharing" target="_blank" class="link-btn btn-available-teal" style="margin-top: 10px; justify-content: center;">
+                                    <i class="fa-solid fa-play"></i> Assistir Gravação
+                                </a>
+                            </div>
+                             <div class="material-item">
+                                <h5>Aula de Exercícios 2</h5>
+                                <a href="https://drive.google.com/file/d/1zB3lNp2JkqkjuJ6OPK5NU3w8RSeW6z1-/view?usp=sharing" target="_blank" class="link-btn btn-available-teal" style="margin-top: 10px; justify-content: center;">
+                                    <i class="fa-solid fa-play"></i> Assistir Gravação
+                                </a>
+                            </div>
+                             <div class="material-item">
+                                <h5>Aula de Exercícios 3</h5>
+                                <a href="https://www.youtube.com/watch?v=2xLvVgx2428" target="_blank" class="link-btn btn-available-teal" style="margin-top: 10px; justify-content: center;">
+                                    <i class="fa-brands fa-youtube"></i> Assistir no YouTube
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Haroldo Candal - UERJ | Departamento de Físico-Química</p>
+    <footer style="text-align: center; padding: 40px; background: var(--col-dark-navy); color: rgba(255,255,255,0.7); margin-top: auto;">
+        <p>&copy; 2025 <strong>Prof. Haroldo Candal</strong><br>Instituto de Química - UERJ</p>
     </footer>
+
+    <script>
+        function openTab(tabName, btnElement) {
+            var contents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+            var btns = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            btnElement.classList.add("active");
+        }
+    </script>
 </body>
 </html>
