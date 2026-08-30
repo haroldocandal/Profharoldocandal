@@ -169,6 +169,8 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            font: inherit;
+            color: inherit;
         }
 
         .tab-btn:hover {
@@ -183,6 +185,11 @@
             border-color: var(--col-dark-navy);
             transform: scale(1.02);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-btn:focus-visible {
+            outline: 3px solid var(--col-gold);
+            outline-offset: 2px;
         }
 
         .tab-content {
@@ -202,6 +209,16 @@
 
             to {
                 opacity: 1;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
             }
         }
 
@@ -228,18 +245,6 @@
             color: #666;
         }
 
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        @media (max-width: 900px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
         /* Caixas de Informação */
         .info-box {
             padding: 25px;
@@ -251,16 +256,6 @@
         .box-blue {
             background: #f0f8ff;
             border-color: #bee3f8;
-        }
-
-        .box-green {
-            background: #f0fff4;
-            border-color: #c6f6d5;
-        }
-
-        .box-indigo {
-            background: #eef2ff;
-            border-color: #c7d2fe;
         }
 
         .box-gray {
@@ -276,31 +271,6 @@
             font-size: 1.2rem;
             margin-bottom: 15px;
             color: var(--col-dark-navy);
-        }
-
-        /* Listas */
-        .info-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .list-item-card {
-            background: var(--white);
-            padding: 15px;
-            border-radius: 6px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-            font-size: 0.95rem;
-        }
-
-        .date-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            background: var(--white);
-            border-radius: 6px;
-            border-bottom: 1px solid #eee;
         }
 
         /* --- MATERIAIS LISTA --- */
@@ -458,500 +428,8 @@
         </div>
 
         <div class="tabs-container">
-            <div class="tabs-nav">
-                <div class="tab-btn active" onclick="openTab('termodinamica', this)">
-                    <i class="fa-solid fa-temperature-half" style="font-size: 1.5rem;"></i>
-                    <span>Termodinâmica</span>
-                </div>
-                <div class="tab-btn" onclick="openTab('eletromagnetismo', this)">
-                    <i class="fa-solid fa-bolt" style="font-size: 1.5rem;"></i>
-                    <span>Eletromagnetismo</span>
-                </div>
-                <div class="tab-btn" onclick="openTab('quantica', this)">
-                    <i class="fa-solid fa-atom" style="font-size: 1.5rem;"></i>
-                    <span>Química Quântica (Introdução)</span>
-                </div>
-                <div class="tab-btn" onclick="openTab('quimicaGeral', this)">
-                    <i class="fa-solid fa-flask" style="font-size: 1.5rem;"></i>
-                    <span>Química Geral</span>
-                </div>
-                <div class="tab-btn" onclick="openTab('termodinamicaPG', this)">
-                    <i class="fa-solid fa-temperature-half" style="font-size: 1.5rem;"></i>
-                    <span>Termodinâmica (PG)</span>
-                </div>
-                <div class="tab-btn" onclick="openTab('quanticaPG', this)">
-                    <i class="fa-solid fa-atom" style="font-size: 1.5rem;"></i>
-                    <span>Química Quântica (Métodos)</span>
-                </div>
-            </div>
-
-            <div id="termodinamica" class="tab-content active">
-                <div class="subject-header">
-                    <div class="subject-icon">🌡️</div>
-                    <div class="subject-title">
-                        <h2>Termodinâmica</h2>
-                        <p class="subject-desc">Estudo das leis fundamentais que governam as transformações de energia e
-                            matéria.</p>
-                    </div>
-                </div>
-
-                <div class="info-box box-gray">
-                    <div class="box-title"><i class="fa-solid fa-layer-group"></i> Materiais por Tópico</div>
-                    <div class="materials-list">
-
-                        <div class="material-item">
-                            <h4>1. Gases Perfeitos</h4>
-                            <div class="material-links">
-                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em
-                                    breve)</span>
-                                <a href="https://lqtsm.notion.site/Lista-de-Exerc-cios-Gases-Perfeitos-1878e483182a806395f4f004931b1ab0?pvs=74"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>2. Gases Reais</h4>
-                            <div class="material-links">
-                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em
-                                    breve)</span>
-                                <a href="https://lqtsm.notion.site/Lista-de-Exerc-cios-Gases-Reais-1878e483182a806391e1eb983dfb5b6c?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>3. Primeira Lei e Entalpia</h4>
-                            <div class="material-links">
-                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em
-                                    breve)</span>
-                                <a href="https://lqtsm.notion.site/Lista-de-Exerc-cios-Lei-Zero-Primeira-Lei-e-Entalpia-18a8e483182a80fd8b72f8cc8de44786?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>4. Termoquímica</h4>
-                            <div class="material-links">
-                                <a href="https://drive.google.com/file/d/1za7im92RCt4JqHy_zYzpYHcadIVcVBAH/view?usp=sharing"
-                                    target="_blank" class="link-btn btn-available-blue"><i
-                                        class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
-                                <a href="https://drive.google.com/file/d/1Xz4VY0Ryyzx3mY1INMx2ts81vAZSDPjD/view?usp=sharing"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>5. Entropia e Segunda Lei</h4>
-                            <div class="material-links">
-                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em
-                                    breve)</span>
-                                <a href="https://lqtsm.notion.site/Lista-de-Exerc-cios-Segunda-Lei-1e18e483182a80d29d6eda0412e8094b?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>6. Terceira Lei</h4>
-                            <div class="material-links">
-                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em
-                                    breve)</span>
-                                <a href="https://lqtsm.notion.site/Lista-de-Exerc-cios-Terceira-Lei-e-Entropias-Convencionais-1ef8e483182a80caacc0e6c405b227ee?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>7. Energia Livre</h4>
-                            <div class="material-links">
-                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em
-                                    breve)</span>
-                                <a href="https://lqtsm.notion.site/Lista-de-Exerc-cios-Energia-Livre-1f78e483182a80c78047f4ac0df2b80a?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>8. Relações Termodinâmicas</h4>
-                            <div class="material-links">
-                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em
-                                    breve)</span>
-                                <a href="https://lqtsm.notion.site/Rela-es-Termodin-micas-2068e483182a80e29586ffe6500ecd58?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>9. Equilíbrio de Fases</h4>
-                            <div class="material-links">
-                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em
-                                    breve)</span>
-                                <a href="https://lqtsm.notion.site/Equil-brio-de-Fases-20e8e483182a802695e5f10ed55eb643?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>10. Equilíbrio Químico</h4>
-                            <div class="material-links">
-                                <span class="link-btn btn-disabled"><i class="fa-regular fa-file"></i> Teoria (Em
-                                    breve)</span>
-                                <a href="https://lqtsm.notion.site/Equil-brio-Qu-mico-20e8e483182a806ab5a3d04c9eb20fc9?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div id="eletromagnetismo" class="tab-content">
-                <div class="subject-header">
-                    <div class="subject-icon">⚡</div>
-                    <div class="subject-title">
-                        <h2>Eletromagnetismo</h2>
-                        <p class="subject-desc">Princípios fundamentais da eletrostática, eletrodinâmica e suas
-                            aplicações.</p>
-                    </div>
-                </div>
-
-                <div class="info-box box-gray">
-                    <div class="box-title"><i class="fa-solid fa-layer-group"></i> Materiais por Tópico</div>
-                    <div class="materials-list">
-
-                        <div class="material-item">
-                            <h4>0. Lista de Revisão</h4>
-                            <div class="material-links">
-                                <a href="https://drive.google.com/file/d/1LY5nSfR9kR1lg_rkjpJHvzh56TNdFSFD/view?usp=sharing"
-                                    target="_blank" class="link-btn btn-available-blue"><i
-                                        class="fa-solid fa-file-pdf"></i> Lista em PDF</a>
-                                <a href=""
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Em breve</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>1. Lei de Coulomb e Campo Elétrico</h4>
-                            <div class="material-links">
-                                <a href="https://drive.google.com/file/d/1wM03h7fHUKpfz9cNCs-WtyBlJiNtuZ3N/view?usp=sharing"
-                                    target="_blank" class="link-btn btn-available-blue"><i
-                                        class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
-                                <a href="https://lqtsm.notion.site/Lei-de-Coulomb-e-Campo-El-trico-20a8e483182a80bb825dd4a386f8d7f6?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>2. Fluxo Elétrico e Lei de Gauss</h4>
-                            <div class="material-links">
-                                <a href="https://drive.google.com/file/d/1GW02hGluEsxM9MrXTZuPzDJCgCwH_Q6R/view?usp=sharing"
-                                    target="_blank" class="link-btn btn-available-blue"><i
-                                        class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
-                                <a href="https://lqtsm.notion.site/Fluxo-El-trico-e-Lei-de-Gauss-2138e483182a801a8f6ecd3e24bc0925?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>3. Potencial Elétrico</h4>
-                            <div class="material-links">
-                                <a href="https://drive.google.com/file/d/1lPbZiAM1Z8wjaOY7tr4r7_xaTwUhX0Zs/view?usp=sharing"
-                                    target="_blank" class="link-btn btn-available-blue"><i
-                                        class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
-                                <a href="https://lqtsm.notion.site/Potencial-El-trico-2138e483182a80c89f6aca8539bea381?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>4. Capacitores e Dielétricos</h4>
-                            <div class="material-links">
-                                <a href="https://drive.google.com/file/d/1w93DzQrt6lAVaG0jwTKVRp2NDbB240gC/view?usp=sharing"
-                                    target="_blank" class="link-btn btn-available-blue"><i
-                                        class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
-                                <a href="https://lqtsm.notion.site/Capacitores-e-Diel-tricos-21e8e483182a801e915bca7f78fccaac?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>5. Corrente, Resistência e Potência</h4>
-                            <div class="material-links">
-                                <a href="https://drive.google.com/file/d/1ytcN1xNwfTAvdbCsc8BaVfTKOIO61CqN/view?usp=sharing"
-                                    target="_blank" class="link-btn btn-available-blue"><i
-                                        class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
-                                <a href="https://lqtsm.notion.site/Corrente-Resist-ncia-e-Pot-ncia-21e8e483182a8026b562ed28de1ba9cc?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>6. Circuitos Simples e RC</h4>
-                            <div class="material-links">
-                                <a href="https://drive.google.com/file/d/1YXKpv6KSVOEAlxFN8aFjjXAzXm78SGHi/view?usp=sharing"
-                                    target="_blank" class="link-btn btn-available-blue"><i
-                                        class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
-                                <a href="https://lqtsm.notion.site/Circuitos-Simples-e-Circuitos-RC-21f8e483182a807cbcdfc48edc39b108?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>7. Campos Magnéticos</h4>
-                            <div class="material-links">
-                                <a href="https://drive.google.com/file/d/1DvzVICwRxLivyn4YCnn6j3LWSh9ruAEh/view?usp=sharing"
-                                    target="_blank" class="link-btn btn-available-blue"><i
-                                        class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
-                                <a href="https://lqtsm.notion.site/Campo-Magn-tico-2788e483182a80d3a257f741de41f6e6?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                        <div class="material-item">
-                            <h4>8. Fontes de Campo Magnético</h4>
-                            <div class="material-links">
-                                <a href="https://drive.google.com/file/d/1hx2-p9-IGdRdVn_TOAZCDK7gf-zo_Bad/view?usp=sharing"
-                                    target="_blank" class="link-btn btn-available-blue"><i
-                                        class="fa-solid fa-file-pdf"></i> Teoria (PDF)</a>
-                                <a href="https://lqtsm.notion.site/Fontes-de-Campo-Magn-tico-2a38e483182a8084a20cef69c788d256?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div id="quantica" class="tab-content">
-                <div class="subject-header">
-                    <div class="subject-icon">⚛️</div>
-                    <div class="subject-title">
-                        <h2>Química Quântica (Introdução)</h2>
-                        <p class="subject-desc">Introdução aos princípios da mecânica quântica aplicados a sistemas
-                            químicos.</p>
-                    </div>
-                </div>
-
-                <div class="info-box box-gray">
-                    <div class="box-title"><i class="fa-solid fa-layer-group"></i> Materiais por Tópico</div>
-
-                    <div class="materials-list">
-                        <div class="material-item">
-                            <h4>1. Surgimento da Teoria Quântica</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>2. Equação Clássica de Ondas</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>3. Equação de Schrödinger</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>4. Postulados e Princípios</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>5. Oscilador Harmônico</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>6. Rotor Rígido</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>7. Espécies Hidrogenoides</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>8. Métodos de Aproximação</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>9. Átomos Multieletrônicos</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>10. Ligação Química</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="quimicaGeral" class="tab-content">
-                <div class="subject-header">
-                    <div class="subject-icon">🧪</div>
-                    <div class="subject-title">
-                        <h2>Química Geral</h2>
-                        <p class="subject-desc">Estudo dos princípios fundamentais da química: estrutura atômica,
-                            ligações, termodinâmica e cinética.</p>
-                    </div>
-                </div>
-
-                <div class="info-box box-blue">
-                    <div class="box-title"><i class="fa-solid fa-list-check"></i> Listas de Revisão para as Provas</div>
-                    <div class="materials-list">
-                        <div class="material-item">
-                            <h4>Provas</h4>
-                            <div class="material-links">
-                                <a href="https://lqtsm.notion.site/Lista-de-Exerc-cios-P1-1b28e483182a80bca3ebc8c9dde3817d?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> P1</a>
-                                <a href="https://www.notion.so/lqtsm/Lista-de-Exerc-cios-P2-e0d7fd2a7cbd4ebaa6500f1564969ec5?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> P2</a>
-                                <span class="link-btn btn-disabled"><i class="fa-regular fa-clock"></i> P3 (Em
-                                    breve)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-box box-gray">
-                    <div class="box-title"><i class="fa-solid fa-layer-group"></i> Materiais por Tópico</div>
-                    <div class="materials-list">
-                        <div class="material-item">
-                            <h4>1. Estrutura Atômica</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>2. Ligações Químicas</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>3. Termodinâmica Química</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>4. Cinética Química</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>5. Equilíbrio Químico</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>6. Soluções</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>7. Eletroquímica</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                        <div class="material-item">
-                            <h4>8. Ácidos e Bases</h4><span class="link-btn btn-disabled">Em breve</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="termodinamicaPG" class="tab-content">
-                <div class="subject-header">
-                    <div class="subject-icon">🌡️</div>
-                    <div class="subject-title">
-                        <h2>Termodinâmica - Pós-Graduação</h2>
-                        <p class="subject-desc">Aprofundamento em termodinâmica para pesquisadores e alunos de
-                            pós-graduação</p>
-                    </div>
-                </div>
-
-                <div class="info-box box-gray">
-                    <div class="box-title"><i class="fa-solid fa-layer-group"></i> Materiais por Tópico</div>
-                    <div style="margin-bottom: 20px;">
-                        <a href="https://drive.google.com/file/d/1EAavMaJD7LLsbAFt207BPjbNfVQDE6x-/view?usp=sharing"
-                            target="_blank" class="link-btn btn-available-blue"><i class="fa-solid fa-file-pdf"></i>
-                            Teoria (Todos os Temas)</a>
-                    </div>
-                    <div class="materials-list">
-                        <div class="material-item">
-                            <h4>Gases Reais</h4>
-                            <div class="material-links">
-                                <a href="https://lqtsm.notion.site/Lista-de-Exerc-cios-Gases-Reais-3418e483182a803399c6e4c29edebe5d?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-                        <div class="material-item">
-                            <h4>Primeira Lei, Energia Interna e Entalpia</h4>
-                            <div class="material-links">
-                                <a href="https://www.notion.so/lqtsm/Lista-de-Exerc-cios-Primeira-Lei-Energia-Interna-e-Entalpia-3488e483182a8078803bcae783bcebf0?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-                        <div class="material-item">
-                            <h4>Entropia, Segunda e Terceira Leis</h4>
-                            <div class="material-links">
-                                <a href="https://www.notion.so/lqtsm/Lista-de-Exerc-cios-Entropia-Segunda-e-Terceira-Leis-3538e483182a80d5bf12fec5dacb72e0?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-                        <div class="material-item">
-                            <h4>Equilíbrio Químico</h4>
-                            <div class="material-links">
-                                <a href="https://www.notion.so/lqtsm/Lista-de-Exerc-cios-Energia-Livre-e-Equil-brio-3598e483182a8044a64fdfeef4a7ab47?source=copy_link"
-                                    target="_blank" class="link-btn btn-available-teal"><i
-                                        class="fa-solid fa-list-check"></i> Exercícios</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="quanticaPG" class="tab-content">
-            <div class="subject-header">
-                <div class="subject-icon">⚛️</div>
-                <div class="subject-title">
-                    <h2>Química Quântica (Métodos)</h2>
-                    <p class="subject-desc">Teoria quântica avançada com aplicações em estrutura eletrônica e
-                        espectroscopia.</p>
-                </div>
-            </div>
-
-            <div class="info-box box-gray">
-                <div class="box-title"><i class="fa-solid fa-layer-group"></i> Materiais por Tópico</div>
-                <div class="materials-list">
-                    <div class="material-item">
-                        <h4>1. O método variacional</h4><span class="link-btn btn-disabled">Em breve</span>
-                    </div>
-                    <div class="material-item">
-                        <h4>2. Teoria de perturbação</h4><span class="link-btn btn-disabled">Em breve</span>
-                    </div>
-                    <div class="material-item">
-                        <h4>3. Átomos Multieletrônicos, Correlação Eletrônica e o Método de Hartree-Fock</h4><span
-                            class="link-btn btn-disabled">Em breve</span>
-                    </div>
-                    <div class="material-item">
-                        <h4>4. Teoria da Ligação de Valência e do Orbital Molecular sobre o H2+</h4><span
-                            class="link-btn btn-disabled">Em breve</span>
-                    </div>
-                    <div class="material-item">
-                        <h4>5. Interação de Configuração</h4><span class="link-btn btn-disabled">Em breve</span>
-                    </div>
-                    <div class="material-item">
-                        <h4>6. Teoria de Perturbação de Møller–Plesset (MP)</h4><span class="link-btn btn-disabled">Em
-                            breve</span>
-                    </div>
-                    <div class="material-item">
-                        <h4>7. Método de Coupled-Cluster</h4><span class="link-btn btn-disabled">Em breve</span>
-                    </div>
-                    <div class="material-item">
-                        <h4>8. Teoria do Funcional da Densidade (DFT).</h4><span class="link-btn btn-disabled">Em
-                            breve</span>
-                    </div>
-                    <div class="material-item">
-                        <h4>9. Métodos Semi-Empíricos e Mecânica Molecular</h4><span class="link-btn btn-disabled">Em
-                            breve</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+            <div class="tabs-nav" id="tabsNav"></div>
+            <div id="tabsContent"></div>
         </div>
     </main>
 
@@ -959,19 +437,324 @@
         <p>&copy; 2025 <strong>Prof. Haroldo Candal</strong><br>Instituto de Química - UERJ</p>
     </footer>
 
+    <!-- ==================================================================== -->
+    <!--  ÁREA DE EDIÇÃO — É SÓ AQUI QUE VOCÊ MEXE                            -->
+    <!--                                                                      -->
+    <!--  Cada tópico tem dois campos:                                        -->
+    <!--     LINK_TEORIA:     "https://..."   (vazio = botão "Em breve")      -->
+    <!--     LINK_EXERCICIOS: "https://..."   (vazio = botão "Em breve")      -->
+    <!--                                                                      -->
+    <!--  Para adicionar um tópico, copie uma linha inteira e edite.          -->
+    <!--  Para adicionar uma disciplina, copie um bloco inteiro e edite.      -->
+    <!-- ==================================================================== -->
     <script>
-        function openTab(tabName, btnElement) {
-            var contents = document.getElementsByClassName("tab-content");
-            for (var i = 0; i < contents.length; i++) {
-                contents[i].classList.remove("active");
+        const DISCIPLINAS = [
+
+            {
+                ID: "termodinamica",
+                NOME: "Termodinâmica",
+                ICONE_ABA: "fa-solid fa-temperature-half",
+                EMOJI: "🌡️",
+                DESCRICAO: "Estudo das leis fundamentais que governam as transformações de energia e matéria.",
+                TOPICOS: [
+                    {
+                        TITULO: "1. Gases Perfeitos",
+                        LINK_TEORIA: "",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Lista-de-Exerc-cios-Gases-Perfeitos-1878e483182a806395f4f004931b1ab0?pvs=74"
+                    },
+                    {
+                        TITULO: "2. Gases Reais",
+                        LINK_TEORIA: "",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Lista-de-Exerc-cios-Gases-Reais-1878e483182a806391e1eb983dfb5b6c?source=copy_link"
+                    },
+                    {
+                        TITULO: "3. Primeira Lei e Entalpia",
+                        LINK_TEORIA: "",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Lista-de-Exerc-cios-Lei-Zero-Primeira-Lei-e-Entalpia-18a8e483182a80fd8b72f8cc8de44786?source=copy_link"
+                    },
+                    {
+                        TITULO: "4. Termoquímica",
+                        LINK_TEORIA: "https://drive.google.com/file/d/1za7im92RCt4JqHy_zYzpYHcadIVcVBAH/view?usp=sharing",
+                        LINK_EXERCICIOS: "https://drive.google.com/file/d/1Xz4VY0Ryyzx3mY1INMx2ts81vAZSDPjD/view?usp=sharing"
+                    },
+                    {
+                        TITULO: "5. Entropia e Segunda Lei",
+                        LINK_TEORIA: "",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Lista-de-Exerc-cios-Segunda-Lei-1e18e483182a80d29d6eda0412e8094b?source=copy_link"
+                    },
+                    {
+                        TITULO: "6. Terceira Lei",
+                        LINK_TEORIA: "",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Lista-de-Exerc-cios-Terceira-Lei-e-Entropias-Convencionais-1ef8e483182a80caacc0e6c405b227ee?source=copy_link"
+                    },
+                    {
+                        TITULO: "7. Energia Livre",
+                        LINK_TEORIA: "",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Lista-de-Exerc-cios-Energia-Livre-1f78e483182a80c78047f4ac0df2b80a?source=copy_link"
+                    },
+                    {
+                        TITULO: "8. Relações Termodinâmicas",
+                        LINK_TEORIA: "",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Rela-es-Termodin-micas-2068e483182a80e29586ffe6500ecd58?source=copy_link"
+                    },
+                    {
+                        TITULO: "9. Equilíbrio de Fases",
+                        LINK_TEORIA: "",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Equil-brio-de-Fases-20e8e483182a802695e5f10ed55eb643?source=copy_link"
+                    },
+                    {
+                        TITULO: "10. Equilíbrio Químico",
+                        LINK_TEORIA: "",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Equil-brio-Qu-mico-20e8e483182a806ab5a3d04c9eb20fc9?source=copy_link"
+                    }
+                ]
+            },
+
+            {
+                ID: "eletromagnetismo",
+                NOME: "Eletromagnetismo",
+                ICONE_ABA: "fa-solid fa-bolt",
+                EMOJI: "⚡",
+                DESCRICAO: "Princípios fundamentais da eletrostática, eletrodinâmica e suas aplicações.",
+                TOPICOS: [
+                    {
+                        TITULO: "0. Lista de Revisão",
+                        LINK_TEORIA: "https://drive.google.com/file/d/1LY5nSfR9kR1lg_rkjpJHvzh56TNdFSFD/view?usp=sharing",
+                        LINK_EXERCICIOS: ""
+                    },
+                    {
+                        TITULO: "1. Lei de Coulomb e Campo Elétrico",
+                        LINK_TEORIA: "https://drive.google.com/file/d/1wM03h7fHUKpfz9cNCs-WtyBlJiNtuZ3N/view?usp=sharing",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Lei-de-Coulomb-e-Campo-El-trico-20a8e483182a80bb825dd4a386f8d7f6?source=copy_link"
+                    },
+                    {
+                        TITULO: "2. Fluxo Elétrico e Lei de Gauss",
+                        LINK_TEORIA: "https://drive.google.com/file/d/1GW02hGluEsxM9MrXTZuPzDJCgCwH_Q6R/view?usp=sharing",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Fluxo-El-trico-e-Lei-de-Gauss-2138e483182a801a8f6ecd3e24bc0925?source=copy_link"
+                    },
+                    {
+                        TITULO: "3. Potencial Elétrico",
+                        LINK_TEORIA: "https://drive.google.com/file/d/1lPbZiAM1Z8wjaOY7tr4r7_xaTwUhX0Zs/view?usp=sharing",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Potencial-El-trico-2138e483182a80c89f6aca8539bea381?source=copy_link"
+                    },
+                    {
+                        TITULO: "4. Capacitores e Dielétricos",
+                        LINK_TEORIA: "https://drive.google.com/file/d/1w93DzQrt6lAVaG0jwTKVRp2NDbB240gC/view?usp=sharing",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Capacitores-e-Diel-tricos-21e8e483182a801e915bca7f78fccaac?source=copy_link"
+                    },
+                    {
+                        TITULO: "5. Corrente, Resistência e Potência",
+                        LINK_TEORIA: "https://drive.google.com/file/d/1ytcN1xNwfTAvdbCsc8BaVfTKOIO61CqN/view?usp=sharing",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Corrente-Resist-ncia-e-Pot-ncia-21e8e483182a8026b562ed28de1ba9cc?source=copy_link"
+                    },
+                    {
+                        TITULO: "6. Circuitos Simples e RC",
+                        LINK_TEORIA: "https://drive.google.com/file/d/1YXKpv6KSVOEAlxFN8aFjjXAzXm78SGHi/view?usp=sharing",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Circuitos-Simples-e-Circuitos-RC-21f8e483182a807cbcdfc48edc39b108?source=copy_link"
+                    },
+                    {
+                        TITULO: "7. Campos Magnéticos",
+                        LINK_TEORIA: "https://drive.google.com/file/d/1DvzVICwRxLivyn4YCnn6j3LWSh9ruAEh/view?usp=sharing",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Campo-Magn-tico-2788e483182a80d3a257f741de41f6e6?source=copy_link"
+                    },
+                    {
+                        TITULO: "8. Fontes de Campo Magnético",
+                        LINK_TEORIA: "https://drive.google.com/file/d/1hx2-p9-IGdRdVn_TOAZCDK7gf-zo_Bad/view?usp=sharing",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Fontes-de-Campo-Magn-tico-2a38e483182a8084a20cef69c788d256?source=copy_link"
+                    }
+                ]
+            },
+
+            {
+                ID: "quantica",
+                NOME: "Química Quântica (Introdução)",
+                ICONE_ABA: "fa-solid fa-atom",
+                EMOJI: "⚛️",
+                DESCRICAO: "Introdução aos princípios da mecânica quântica aplicados a sistemas químicos.",
+                TOPICOS: [
+                    { TITULO: "1. Surgimento da Teoria Quântica", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "2. Equação Clássica de Ondas", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "3. Equação de Schrödinger", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "4. Postulados e Princípios", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "5. Oscilador Harmônico", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "6. Rotor Rígido", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "7. Espécies Hidrogenoides", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "8. Métodos de Aproximação", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "9. Átomos Multieletrônicos", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "10. Ligação Química", LINK_TEORIA: "", LINK_EXERCICIOS: "" }
+                ]
+            },
+
+            {
+                ID: "quimicaGeral",
+                NOME: "Química Geral",
+                ICONE_ABA: "fa-solid fa-flask",
+                EMOJI: "🧪",
+                DESCRICAO: "Estudo dos princípios fundamentais da química: estrutura atômica, ligações, termodinâmica e cinética.",
+                // Caixa opcional de listas de revisão. Link vazio = botão "Em breve".
+                PROVAS: {
+                    TITULO_CAIXA: "Listas de Revisão para as Provas",
+                    LISTAS: [
+                        { TITULO: "P1", LINK: "https://lqtsm.notion.site/Lista-de-Exerc-cios-P1-1b28e483182a80bca3ebc8c9dde3817d?source=copy_link" },
+                        { TITULO: "P2", LINK: "https://www.notion.so/lqtsm/Lista-de-Exerc-cios-P2-e0d7fd2a7cbd4ebaa6500f1564969ec5?source=copy_link" },
+                        { TITULO: "P3", LINK: "" }
+                    ]
+                },
+                TOPICOS: [
+                    { TITULO: "1. Estrutura Atômica", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "2. Ligações Químicas", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "3. Termodinâmica Química", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "4. Cinética Química", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "5. Equilíbrio Químico", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "6. Soluções", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "7. Eletroquímica", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "8. Ácidos e Bases", LINK_TEORIA: "", LINK_EXERCICIOS: "" }
+                ]
+            },
+
+            {
+                ID: "termodinamicaPG",
+                NOME: "Termodinâmica (PG)",
+                ICONE_ABA: "fa-solid fa-temperature-half",
+                EMOJI: "🌡️",
+                DESCRICAO: "Aprofundamento em termodinâmica para pesquisadores e alunos de pós-graduação.",
+                // Apostila única da disciplina. Vazio = o botão nem aparece.
+                LINK_TEORIA_GERAL: "https://drive.google.com/file/d/1EAavMaJD7LLsbAFt207BPjbNfVQDE6x-/view?usp=sharing",
+                TOPICOS: [
+                    {
+                        TITULO: "Gases Reais",
+                        LINK_TEORIA: "",
+                        LINK_EXERCICIOS: "https://lqtsm.notion.site/Lista-de-Exerc-cios-Gases-Reais-3418e483182a803399c6e4c29edebe5d?source=copy_link"
+                    },
+                    {
+                        TITULO: "Primeira Lei, Energia Interna e Entalpia",
+                        LINK_TEORIA: "",
+                        LINK_EXERCICIOS: "https://www.notion.so/lqtsm/Lista-de-Exerc-cios-Primeira-Lei-Energia-Interna-e-Entalpia-3488e483182a8078803bcae783bcebf0?source=copy_link"
+                    },
+                    {
+                        TITULO: "Entropia, Segunda e Terceira Leis",
+                        LINK_TEORIA: "",
+                        LINK_EXERCICIOS: "https://www.notion.so/lqtsm/Lista-de-Exerc-cios-Entropia-Segunda-e-Terceira-Leis-3538e483182a80d5bf12fec5dacb72e0?source=copy_link"
+                    },
+                    {
+                        TITULO: "Equilíbrio Químico",
+                        LINK_TEORIA: "",
+                        LINK_EXERCICIOS: "https://www.notion.so/lqtsm/Lista-de-Exerc-cios-Energia-Livre-e-Equil-brio-3598e483182a8044a64fdfeef4a7ab47?source=copy_link"
+                    }
+                ]
+            },
+
+            {
+                ID: "quanticaPG",
+                NOME: "Química Quântica (Métodos)",
+                ICONE_ABA: "fa-solid fa-atom",
+                EMOJI: "⚛️",
+                DESCRICAO: "Teoria quântica avançada com aplicações em estrutura eletrônica e espectroscopia.",
+                TOPICOS: [
+                    { TITULO: "1. O método variacional", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "2. Teoria de perturbação", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "3. Átomos Multieletrônicos, Correlação Eletrônica e o Método de Hartree-Fock", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "4. Teoria da Ligação de Valência e do Orbital Molecular sobre o H2+", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "5. Interação de Configuração", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "6. Teoria de Perturbação de Møller–Plesset (MP)", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "7. Método de Coupled-Cluster", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "8. Teoria do Funcional da Densidade (DFT)", LINK_TEORIA: "", LINK_EXERCICIOS: "" },
+                    { TITULO: "9. Métodos Semi-Empíricos e Mecânica Molecular", LINK_TEORIA: "", LINK_EXERCICIOS: "" }
+                ]
             }
-            var btns = document.getElementsByClassName("tab-btn");
-            for (var i = 0; i < btns.length; i++) {
-                btns[i].classList.remove("active");
+
+        ];
+    </script>
+
+    <!-- ==================================================================== -->
+    <!--  MOTOR DE RENDERIZAÇÃO — não precisa mexer daqui para baixo          -->
+    <!-- ==================================================================== -->
+    <script>
+        const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+        const temLink = v => typeof v === "string" && v.trim() !== "";
+
+        function botao(link, rotulo, icone, classe) {
+            if (!temLink(link)) {
+                return `<span class="link-btn btn-disabled"><i class="fa-regular fa-clock"></i> ${esc(rotulo)} (Em breve)</span>`;
             }
-            document.getElementById(tabName).classList.add("active");
-            btnElement.classList.add("active");
+            return `<a href="${esc(link.trim())}" target="_blank" rel="noopener" class="link-btn ${classe}"><i class="${icone}"></i> ${esc(rotulo)}</a>`;
         }
+
+        function topicoHTML(t) {
+            return `<div class="material-item">
+                <h4>${esc(t.TITULO)}</h4>
+                <div class="material-links">
+                    ${botao(t.LINK_TEORIA, "Teoria", "fa-solid fa-file-pdf", "btn-available-blue")}
+                    ${botao(t.LINK_EXERCICIOS, "Exercícios", "fa-solid fa-list-check", "btn-available-teal")}
+                </div>
+            </div>`;
+        }
+
+        function provasHTML(p) {
+            if (!p || !p.LISTAS || !p.LISTAS.length) return "";
+            const botoes = p.LISTAS.map(l => botao(l.LINK, l.TITULO, "fa-solid fa-list-check", "btn-available-teal")).join("\n");
+            return `<div class="info-box box-blue">
+                <div class="box-title"><i class="fa-solid fa-list-check"></i> ${esc(p.TITULO_CAIXA || "Listas de Revisão")}</div>
+                <div class="materials-list">
+                    <div class="material-item">
+                        <h4>Provas</h4>
+                        <div class="material-links">${botoes}</div>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        function disciplinaHTML(d, ativa) {
+            const teoriaGeral = temLink(d.LINK_TEORIA_GERAL)
+                ? `<div style="margin-bottom: 20px;">
+                       <a href="${esc(d.LINK_TEORIA_GERAL.trim())}" target="_blank" rel="noopener" class="link-btn btn-available-blue"><i class="fa-solid fa-file-pdf"></i> Teoria (Todos os Temas)</a>
+                   </div>`
+                : "";
+
+            return `<section id="${esc(d.ID)}" class="tab-content${ativa ? " active" : ""}" role="tabpanel" aria-labelledby="tab-${esc(d.ID)}">
+                <div class="subject-header">
+                    <div class="subject-icon" aria-hidden="true">${d.EMOJI || ""}</div>
+                    <div class="subject-title">
+                        <h2>${esc(d.NOME)}</h2>
+                        <p class="subject-desc">${esc(d.DESCRICAO || "")}</p>
+                    </div>
+                </div>
+                ${provasHTML(d.PROVAS)}
+                <div class="info-box box-gray">
+                    <div class="box-title"><i class="fa-solid fa-layer-group"></i> Materiais por Tópico</div>
+                    ${teoriaGeral}
+                    <div class="materials-list">${(d.TOPICOS || []).map(topicoHTML).join("\n")}</div>
+                </div>
+            </section>`;
+        }
+
+        (function render() {
+            const nav = document.getElementById("tabsNav");
+            const conteudo = document.getElementById("tabsContent");
+
+            nav.innerHTML = DISCIPLINAS.map((d, i) => `
+                <button type="button" class="tab-btn${i === 0 ? " active" : ""}" id="tab-${esc(d.ID)}"
+                        role="tab" aria-controls="${esc(d.ID)}" aria-selected="${i === 0}" data-alvo="${esc(d.ID)}">
+                    <i class="${d.ICONE_ABA}" style="font-size: 1.5rem;" aria-hidden="true"></i>
+                    <span>${esc(d.NOME)}</span>
+                </button>`).join("");
+
+            conteudo.innerHTML = DISCIPLINAS.map((d, i) => disciplinaHTML(d, i === 0)).join("\n");
+
+            nav.setAttribute("role", "tablist");
+            nav.addEventListener("click", e => {
+                const btn = e.target.closest(".tab-btn");
+                if (!btn) return;
+                nav.querySelectorAll(".tab-btn").forEach(b => {
+                    b.classList.remove("active");
+                    b.setAttribute("aria-selected", "false");
+                });
+                conteudo.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+                btn.classList.add("active");
+                btn.setAttribute("aria-selected", "true");
+                document.getElementById(btn.dataset.alvo).classList.add("active");
+            });
+        })();
     </script>
 </body>
 
