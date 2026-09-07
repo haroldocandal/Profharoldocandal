@@ -3,465 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato - Prof. Haroldo Candal</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Contato · Prof. Haroldo Candal</title>
+    <meta name="description" content="Contato do Prof. Haroldo Candal, Instituto de Química da UERJ: endereço, e-mail, telefone, horário de atendimento e perfis acadêmicos.">
+    <meta name="theme-color" content="#0B2A45">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B2A45'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia,serif' font-size='28' font-weight='600' fill='%23fff'%3EHC%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* --- VARIÁVEIS --- */
-        :root {
-            --col-dark-navy: #0E2C40;
-            --col-deep-teal: #1A4A5A;
-            --col-teal:      #148D8D;
-            --col-sage:      #C1E1A7;
-            --col-gold:      #EFBC75;
-            --bg-body:       #f0f4f5;
-            --white:         #ffffff;
-            --text-main:     #2c3e50;
-            --text-light:    #666666;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        /* --- NAVEGAÇÃO --- */
-        nav {
-            background: var(--white);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 12px rgba(14, 44, 64, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-logo {
-            font-weight: 800;
-            font-size: 1.1rem;
-            color: var(--col-dark-navy);
-            border: 2px solid var(--col-teal);
-            padding: 5px 12px;
-            border-radius: 6px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--col-deep-teal);
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--col-teal);
-        }
-
-        .nav-links a.active {
-            color: var(--col-teal);
-            border-bottom: 2px solid var(--col-teal);
-            padding-bottom: 5px;
-        }
-
-        /* --- HEADER --- */
-        .page-header {
-            background: linear-gradient(135deg, var(--col-dark-navy) 0%, var(--col-deep-teal) 100%);
-            color: white;
-            padding: 60px 5%;
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .page-header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* --- CONTAINER --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section {
-            padding: 60px 5%;
-        }
-
-        /* --- CONTACT GRID --- */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: start;
-            margin-top: 40px;
-        }
-
-        .contact-info {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .contact-info h2 {
-            font-size: 1.8rem;
-            color: var(--col-dark-navy);
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-
-        .contact-item {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 25px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .contact-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .contact-icon {
-            font-size: 1.8rem;
-            color: var(--col-teal);
-            flex-shrink: 0;
-            width: 50px;
-            height: 50px;
-            background: rgba(20, 141, 141, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .contact-details h3 {
-            color: var(--col-dark-navy);
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .contact-details p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        .contact-details a {
-            color: var(--col-teal);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .contact-details a:hover {
-            color: var(--col-deep-teal);
-        }
-
-        /* --- FORM --- */
-        .contact-form {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .contact-form h2 {
-            font-size: 1.8rem;
-            color: var(--col-dark-navy);
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--col-dark-navy);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 0.95rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--col-teal);
-            box-shadow: 0 0 0 3px rgba(20, 141, 141, 0.1);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .btn-submit {
-            background: var(--col-teal);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            width: 100%;
-        }
-
-        .btn-submit:hover {
-            background: var(--col-deep-teal);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(20, 141, 141, 0.3);
-        }
-
-        /* --- SOCIAL LINKS --- */
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid #eee;
-        }
-
-        .social-link {
-            width: 45px;
-            height: 45px;
-            background: rgba(20, 141, 141, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--col-teal);
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 1.2rem;
-        }
-
-        .social-link:hover {
-            background: var(--col-teal);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background: var(--col-dark-navy);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 40px 5%;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        footer strong {
-            color: white;
-        }
-
-        /* --- RESPONSIVO --- */
-        @media (max-width: 900px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .page-header h1 {
-                font-size: 2rem;
-            }
-
-            .nav-links {
-                gap: 15px;
-                font-size: 0.8rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .nav-links {
-                width: 100%;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .page-header {
-                padding: 40px 5%;
-            }
-
-            .page-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .contact-info,
-            .contact-form {
-                padding: 25px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav>
-        <a href="index.html" class="nav-logo">HC</a>
-        <div class="nav-links">
-            <a href="index.html">Início</a>
-            <a href="ensino.html">Ensino</a>
-            <a href="https://lqtsm.figma.site" target="_blank">Pesquisa</a>
-            <a href="https://conexaouerj.figma.site" target="_blank">Extensão</a>
-            <a href="contato.html" class="active">Contato</a>
-        </div>
-    </nav>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
-    <header class="page-header">
-        <h1><i class="fa-solid fa-envelope"></i> Contato</h1>
-        <p>Entre em contato para dúvidas, sugestões ou colaborações</p>
+    <header class="site-header">
+        <div class="container nav">
+            <a href="index.html" class="brand" aria-label="Página inicial">
+                <span class="brand-mark" aria-hidden="true">HC</span>
+                <span class="brand-text">
+                    <span class="brand-name">Haroldo Candal</span>
+                    <span class="brand-sub">Instituto de Química · UERJ</span>
+                </span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+            <ul class="nav-links" id="menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="ensino.html">Ensino</a></li>
+                <li><a href="https://lqtsm.github.io/" target="_blank" rel="noopener">Pesquisa <i class="fa-solid fa-arrow-up-right-from-square ext" aria-hidden="true"></i></a></li>
+                <li><a href="https://conexaouerj.github.io/" target="_blank" rel="noopener">Extensão <i class="fa-solid fa-arrow-up-right-from-square ext" aria-hidden="true"></i></a></li>
+                <li><a href="contato.html" class="active" aria-current="page">Contato</a></li>
+            </ul>
+        </div>
     </header>
 
-    <section class="section">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h2>Informações de Contato</h2>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fa-solid fa-building"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Instituição</h3>
-                            <p>Instituto de Química<br>
-                            Universidade do Estado do Rio de Janeiro (UERJ)</p>
-                        </div>
-                    </div>
+    <main id="conteudo">
 
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Endereço</h3>
-                            <p>Rua São Francisco Xavier, 524<br>
-                            Maracanã - Rio de Janeiro, RJ<br>
-                            CEP: 20550-013</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <a href="mailto:haroldo.candal@uerj.br">haroldo.candal@uerj.br</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Telefone</h3>
-                            <p>(21) 2334-0621 (Ramal IQ)</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fa-solid fa-clock"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Horário de Atendimento</h3>
-                            <p>Segunda a Sexta<br>
-                            08:00 às 12:00 e 14:00 às 18:00</p>
-                        </div>
-                    </div>
-
-                    <div class="social-links">
-                        <a href="http://lattes.cnpq.br/0841126231630553" target="_blank" class="social-link" title="Currículo Lattes">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/haroldocandal" target="_blank" class="social-link" title="LinkedIn">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://orcid.org/0000-0003-4609-1107" target="_blank" class="social-link" title="ORCID">
-                            <i class="fa-brands fa-orcid"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="contact-form">
-                    <h2>Envie uma Mensagem</h2>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Nome Completo *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="subject">Assunto *</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Mensagem *</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn-submit">
-                            <i class="fa-solid fa-paper-plane"></i> Enviar Mensagem
-                        </button>
-                    </form>
+        <header class="banner no-video">
+            <div class="container">
+                <div class="banner-inner">
+                    <p class="eyebrow">Fale comigo</p>
+                    <h1>Contato</h1>
+                    <p>Entre em contato para dúvidas, sugestões ou colaborações.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <footer>
-        <p>&copy; 2025 <strong>Prof. Haroldo Candal</strong><br>
-        Instituto de Química - Universidade do Estado do Rio de Janeiro<br>
-        <small>Ensino • Pesquisa • Extensão</small></p>
+        <section class="section">
+            <div class="container">
+                <div class="contact-layout">
+
+                    <div class="panel">
+                        <h2>Informações de contato</h2>
+                        <p class="panel-intro">Atendimento presencial no Instituto de Química, no campus Maracanã.</p>
+
+                        <ul class="contact-list">
+                            <li class="contact-item">
+                                <div class="contact-icon"><i class="fa-solid fa-building-columns" aria-hidden="true"></i></div>
+                                <div>
+                                    <h3>Instituição</h3>
+                                    <p>Instituto de Química<br>Universidade do Estado do Rio de Janeiro (UERJ)</p>
+                                </div>
+                            </li>
+                            <li class="contact-item">
+                                <div class="contact-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></div>
+                                <div>
+                                    <h3>Endereço</h3>
+                                    <p>Rua São Francisco Xavier, 524<br>Maracanã · Rio de Janeiro, RJ<br>CEP 20550-013</p>
+                                </div>
+                            </li>
+                            <li class="contact-item">
+                                <div class="contact-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div>
+                                <div>
+                                    <h3>E-mail</h3>
+                                    <a href="mailto:haroldo.candal@uerj.br">haroldo.candal@uerj.br</a>
+                                </div>
+                            </li>
+                            <li class="contact-item">
+                                <div class="contact-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></div>
+                                <div>
+                                    <h3>Telefone</h3>
+                                    <p>(21) 2334-0621 (Ramal IQ)</p>
+                                </div>
+                            </li>
+                            <li class="contact-item">
+                                <div class="contact-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></div>
+                                <div>
+                                    <h3>Horário de atendimento</h3>
+                                    <p>Segunda a sexta<br>08:00 às 12:00 e 14:00 às 18:00</p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="social-links">
+                            <a href="http://lattes.cnpq.br/0841126231630553" target="_blank" rel="noopener" class="social-link" title="Currículo Lattes">
+                                <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Lattes
+                            </a>
+                            <a href="https://www.linkedin.com/in/haroldocandal" target="_blank" rel="noopener" class="social-link" title="LinkedIn">
+                                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i> LinkedIn
+                            </a>
+                            <a href="https://orcid.org/0000-0003-4609-1107" target="_blank" rel="noopener" class="social-link" title="ORCID">
+                                <i class="fa-brands fa-orcid" aria-hidden="true"></i> ORCID
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h2>Envie uma mensagem</h2>
+                        <p class="panel-intro">Preencha os campos abaixo. A mensagem será aberta no seu aplicativo de e-mail, já endereçada e preenchida.</p>
+
+                        <form id="formContato" novalidate>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="name">Nome completo <span class="req" aria-hidden="true">*</span></label>
+                                    <input type="text" id="name" name="name" autocomplete="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">E-mail <span class="req" aria-hidden="true">*</span></label>
+                                    <input type="email" id="email" name="email" autocomplete="email" required>
+                                </div>
+                                <div class="form-group full">
+                                    <label for="subject">Assunto <span class="req" aria-hidden="true">*</span></label>
+                                    <input type="text" id="subject" name="subject" required>
+                                </div>
+                                <div class="form-group full">
+                                    <label for="message">Mensagem <span class="req" aria-hidden="true">*</span></label>
+                                    <textarea id="message" name="message" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-footer">
+                                <p class="form-hint">Campos marcados com * são obrigatórios.</p>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Enviar mensagem
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/logomarca-uerj.png" alt="Logomarca da UERJ" width="64" height="64" loading="lazy">
+                    <div>
+                        <strong>Prof. Haroldo Candal</strong>
+                        <p>Departamento de Físico-Química<br>Instituto de Química<br>Universidade do Estado do Rio de Janeiro</p>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Início</a></li>
+                        <li><a href="ensino.html"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Ensino</a></li>
+                        <li><a href="https://lqtsm.github.io/" target="_blank" rel="noopener"><i class="fa-solid fa-flask-vial" aria-hidden="true"></i> Pesquisa</a></li>
+                        <li><a href="https://conexaouerj.github.io/" target="_blank" rel="noopener"><i class="fa-solid fa-people-group" aria-hidden="true"></i> Extensão</a></li>
+                        <li><a href="contato.html"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Perfis</h4>
+                    <ul>
+                        <li><a href="http://lattes.cnpq.br/0841126231630553" target="_blank" rel="noopener"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Currículo Lattes</a></li>
+                        <li><a href="https://orcid.org/0000-0003-4609-1107" target="_blank" rel="noopener"><i class="fa-brands fa-orcid" aria-hidden="true"></i> ORCID</a></li>
+                        <li><a href="https://www.linkedin.com/in/haroldocandal" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a></li>
+                        <li><a href="mailto:haroldo.candal@uerj.br"><i class="fa-solid fa-at" aria-hidden="true"></i> haroldo.candal@uerj.br</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; <span data-year>2025</span> Prof. Haroldo Candal · Instituto de Química · UERJ</span>
+                <span class="tagline">Ensino · Pesquisa · Extensão</span>
+            </div>
+        </div>
     </footer>
 
+    <script src="site.js"></script>
+    <script>
+        // O formulário monta um e-mail e abre o aplicativo padrão do visitante.
+        (function () {
+            var form = document.getElementById("formContato");
+            if (!form) return;
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                if (!form.reportValidity()) return;
+                var nome = form.name.value.trim();
+                var email = form.email.value.trim();
+                var assunto = form.subject.value.trim();
+                var msg = form.message.value.trim();
+                var corpo = msg + "\n\n---\n" + nome + "\n" + email;
+                window.location.href = "mailto:haroldo.candal@uerj.br"
+                    + "?subject=" + encodeURIComponent(assunto)
+                    + "&body=" + encodeURIComponent(corpo);
+            });
+        })();
+    </script>
 </body>
 </html>

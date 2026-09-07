@@ -1,441 +1,128 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ensino - Prof. Haroldo Candal</title>
+    <title>Ensino · Prof. Haroldo Candal</title>
+    <meta name="description" content="Materiais de aula do Prof. Haroldo Candal (UERJ): teoria e listas de exercícios de Termodinâmica, Eletromagnetismo, Química Quântica e Química Geral.">
+    <meta name="theme-color" content="#0B2A45">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B2A45'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia,serif' font-size='28' font-weight='600' fill='%23fff'%3EHC%3C/text%3E%3C/svg%3E">
 
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* --- VARIÁVEIS (MESMA PALETA DO SITE) --- */
-        :root {
-            --col-dark-navy: #0E2C40;
-            --col-deep-teal: #1A4A5A;
-            --col-teal: #148D8D;
-            --col-sage: #C1E1A7;
-            --col-gold: #EFBC75;
-            --bg-body: #f0f4f5;
-            --white: #ffffff;
-            --text-main: #2c3e50;
-            --text-light: #666666;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        /* --- NAVIGATION --- */
-        nav {
-            background: var(--white);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 12px rgba(14, 44, 64, 0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-logo {
-            font-weight: 800;
-            font-size: 1.1rem;
-            color: var(--col-dark-navy);
-            border: 2px solid var(--col-teal);
-            padding: 5px 12px;
-            border-radius: 6px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--col-deep-teal);
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--col-teal);
-        }
-
-        .nav-links a.active {
-            color: var(--col-teal);
-            border-bottom: 2px solid var(--col-teal);
-            padding-bottom: 5px;
-        }
-
-        /* --- VÍDEO HEADER --- */
-        .video-header {
-            position: relative;
-            height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            color: white;
-            text-align: center;
-            background-color: var(--col-dark-navy);
-        }
-
-        .video-header video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            object-fit: cover;
-            opacity: 0.6;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 2;
-            padding: 20px;
-        }
-
-        .header-content h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .header-content .divider {
-            width: 80px;
-            height: 4px;
-            background-color: var(--col-teal);
-            margin: 0 auto 15px;
-        }
-
-        /* --- CONTAINER PRINCIPAL --- */
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        /* --- SISTEMA DE ABAS (TABS) --- */
-        .tabs-container {
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            border: 1px solid #e0e0e0;
-        }
-
-        .tabs-nav {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            background: #f8f9fa;
-            border-bottom: 1px solid #e0e0e0;
-            padding: 10px;
-            gap: 10px;
-        }
-
-        .tab-btn {
-            background: var(--white);
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font: inherit;
-            color: inherit;
-        }
-
-        .tab-btn:hover {
-            background: rgba(20, 141, 141, 0.1);
-            border-color: var(--col-teal);
-            color: var(--col-teal);
-        }
-
-        .tab-btn.active {
-            background: var(--col-dark-navy);
-            color: var(--white);
-            border-color: var(--col-dark-navy);
-            transform: scale(1.02);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .tab-btn:focus-visible {
-            outline: 3px solid var(--col-gold);
-            outline-offset: 2px;
-        }
-
-        .tab-content {
-            padding: 40px;
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* --- CONTEÚDO DAS ABAS --- */
-        .subject-header {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .subject-icon {
-            font-size: 3rem;
-        }
-
-        .subject-title h2 {
-            font-size: 2rem;
-            color: var(--col-dark-navy);
-            margin-bottom: 5px;
-        }
-
-        .subject-desc {
-            font-size: 1.1rem;
-            color: #666;
-        }
-
-        /* Caixas de Informação */
-        .info-box {
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border: 1px solid;
-        }
-
-        .box-blue {
-            background: #f0f8ff;
-            border-color: #bee3f8;
-        }
-
-        .box-gray {
-            background: #f9fafb;
-            border-color: #e5e7eb;
-        }
-
-        .box-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--col-dark-navy);
-        }
-
-        /* --- MATERIAIS LISTA --- */
-        .materials-list {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .material-item {
-            background: var(--white);
-            border: 1px solid #e0e0e0;
-            border-left: 4px solid var(--col-teal);
-            border-radius: 6px;
-            padding: 15px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            transition: transform 0.2s;
-        }
-
-        .material-item:hover {
-            transform: translateX(5px);
-        }
-
-        .material-item h4 {
-            color: var(--col-dark-navy);
-            margin: 0;
-            min-width: 200px;
-        }
-
-        .material-links {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .link-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid;
-            transition: all 0.2s;
-        }
-
-        /* Botões de Ação */
-        .btn-available-blue {
-            background: #eff6ff;
-            border-color: #bfdbfe;
-            color: #1e40af;
-        }
-
-        .btn-available-blue:hover {
-            background: #dbeafe;
-        }
-
-        .btn-available-teal {
-            background: #f0fdfa;
-            border-color: #ccfbf1;
-            color: #0f766e;
-        }
-
-        .btn-available-teal:hover {
-            background: #ccfbf1;
-        }
-
-        .btn-disabled {
-            background: #f3f4f6;
-            border-color: #e5e7eb;
-            color: #9ca3af;
-            cursor: not-allowed;
-        }
-
-        /* Botão Principal */
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--col-teal);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        .btn-primary:hover {
-            background: var(--col-deep-teal);
-        }
-
-        footer {
-            background: var(--col-dark-navy);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 40px 5%;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        footer strong {
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <nav>
-        <a href="index.html" class="nav-logo">HC</a>
-        <div class="nav-links">
-            <a href="index.html">Início</a>
-            <a href="ensino.html" class="active">Ensino</a>
-            <a href="https://lqtsm.figma.site" target="_blank">Pesquisa</a>
-            <a href="https://conexaouerj.figma.site" target="_blank">Extensão</a>
-            <a href="contato.html">Contato</a>
-        </div>
-    </nav>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
-    <header class="video-header">
-        <video autoplay loop muted playsinline>
-            <source src="images/ensino.mp4" type="video/mp4">
-        </video>
-        <div class="header-content">
-            <div style="font-size: 3rem; margin-bottom: 10px;">
-                <i class="fa-solid fa-book-open"></i>
-            </div>
-            <h1>Ensino</h1>
-            <div class="divider"></div>
-            <p>Tópicos importantes, com teoria e exercícios.</p>
+    <header class="site-header">
+        <div class="container nav">
+            <a href="index.html" class="brand" aria-label="Página inicial">
+                <span class="brand-mark" aria-hidden="true">HC</span>
+                <span class="brand-text">
+                    <span class="brand-name">Haroldo Candal</span>
+                    <span class="brand-sub">Instituto de Química · UERJ</span>
+                </span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+            <ul class="nav-links" id="menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="ensino.html" class="active" aria-current="page">Ensino</a></li>
+                <li><a href="https://lqtsm.github.io/" target="_blank" rel="noopener">Pesquisa <i class="fa-solid fa-arrow-up-right-from-square ext" aria-hidden="true"></i></a></li>
+                <li><a href="https://conexaouerj.github.io/" target="_blank" rel="noopener">Extensão <i class="fa-solid fa-arrow-up-right-from-square ext" aria-hidden="true"></i></a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
         </div>
     </header>
 
-    <main class="container">
+    <main id="conteudo">
 
-        <div class="info-box box-blue" style="margin-bottom: 30px;">
-            <div class="box-title"><i class="fa-solid fa-clipboard-list"></i> Informações dos Alunos</div>
-            <div class="materials-list" style="margin-top: 10px;">
-                <div class="material-item">
-                    <h4>Atualização de Informações</h4>
-                    <div class="material-links">
-                        <a href="https://lqtsm.notion.site/1a58e483182a8016a8a5e96304d7bd4b?pvs=105" target="_blank"
-                            class="btn-primary"><i class="fa-solid fa-pen-to-square"></i>
-                            Preencher Formulário</a>
-                    </div>
+        <header class="banner">
+            <video autoplay loop muted playsinline aria-hidden="true">
+                <source src="images/ensino.mp4" type="video/mp4">
+            </video>
+            <div class="container">
+                <div class="banner-inner">
+                    <p class="eyebrow">Graduação e pós-graduação</p>
+                    <h1>Ensino</h1>
+                    <p>Tópicos importantes de cada disciplina, com teoria e listas de exercícios.</p>
                 </div>
             </div>
-        </div>
+        </header>
 
-        <div class="tabs-container">
-            <div class="tabs-nav" id="tabsNav"></div>
-            <div id="tabsContent"></div>
-        </div>
+        <section class="section">
+            <div class="container">
+
+                <div class="notice" role="note">
+                    <div class="notice-text">
+                        <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+                        <div>
+                            <strong>Informações dos alunos</strong>
+                            <span>Mantenha seus dados atualizados para receber avisos e materiais das disciplinas.</span>
+                        </div>
+                    </div>
+                    <a href="https://lqtsm.notion.site/1a58e483182a8016a8a5e96304d7bd4b?pvs=105" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i> Preencher formulário
+                    </a>
+                </div>
+
+                <div class="tabs-layout">
+                    <aside class="tabs-nav" aria-label="Disciplinas">
+                        <div class="tabs-nav-label">Disciplinas</div>
+                        <div id="tabsNav" role="tablist" aria-label="Selecionar disciplina" style="display: contents;"></div>
+                    </aside>
+                    <div id="tabsContent"></div>
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
-    <footer>
-        <p>&copy; 2025 <strong>Prof. Haroldo Candal</strong><br>Instituto de Química - UERJ</p>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/logomarca-uerj.png" alt="Logomarca da UERJ" width="64" height="64" loading="lazy">
+                    <div>
+                        <strong>Prof. Haroldo Candal</strong>
+                        <p>Departamento de Físico-Química<br>Instituto de Química<br>Universidade do Estado do Rio de Janeiro</p>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Início</a></li>
+                        <li><a href="ensino.html"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Ensino</a></li>
+                        <li><a href="https://lqtsm.github.io/" target="_blank" rel="noopener"><i class="fa-solid fa-flask-vial" aria-hidden="true"></i> Pesquisa</a></li>
+                        <li><a href="https://conexaouerj.github.io/" target="_blank" rel="noopener"><i class="fa-solid fa-people-group" aria-hidden="true"></i> Extensão</a></li>
+                        <li><a href="contato.html"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Perfis</h4>
+                    <ul>
+                        <li><a href="http://lattes.cnpq.br/0841126231630553" target="_blank" rel="noopener"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Currículo Lattes</a></li>
+                        <li><a href="https://orcid.org/0000-0003-4609-1107" target="_blank" rel="noopener"><i class="fa-brands fa-orcid" aria-hidden="true"></i> ORCID</a></li>
+                        <li><a href="https://www.linkedin.com/in/haroldocandal" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a></li>
+                        <li><a href="mailto:haroldo.candal@uerj.br"><i class="fa-solid fa-at" aria-hidden="true"></i> haroldo.candal@uerj.br</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; <span data-year>2025</span> Prof. Haroldo Candal · Instituto de Química · UERJ</span>
+                <span class="tagline">Ensino · Pesquisa · Extensão</span>
+            </div>
+        </div>
     </footer>
+
+    <script src="site.js"></script>
 
     <!-- ==================================================================== -->
     <!--  ÁREA DE EDIÇÃO — É SÓ AQUI QUE VOCÊ MEXE                            -->
@@ -675,14 +362,22 @@
 
         function botao(link, rotulo, icone, classe) {
             if (!temLink(link)) {
-                return `<span class="link-btn btn-disabled"><i class="fa-regular fa-clock"></i> ${esc(rotulo)} (Em breve)</span>`;
+                return `<span class="link-btn btn-disabled" title="Material ainda não disponível"><i class="fa-regular fa-clock" aria-hidden="true"></i> ${esc(rotulo)} <span class="visually-hidden">(em breve)</span></span>`;
             }
-            return `<a href="${esc(link.trim())}" target="_blank" rel="noopener" class="link-btn ${classe}"><i class="${icone}"></i> ${esc(rotulo)}</a>`;
+            return `<a href="${esc(link.trim())}" target="_blank" rel="noopener" class="link-btn ${classe}"><i class="${icone}" aria-hidden="true"></i> ${esc(rotulo)}</a>`;
+        }
+
+        // Separa "3. Título" em número + título para alinhar a numeração.
+        function tituloHTML(titulo) {
+            const m = /^\s*(\d+)\.\s*(.*)$/.exec(String(titulo));
+            if (!m) return `<span>${esc(titulo)}</span>`;
+            return `<span class="num" aria-hidden="true">${esc(m[1])}.</span><span>${esc(m[2])}</span>`;
         }
 
         function topicoHTML(t) {
-            return `<div class="material-item">
-                <h4>${esc(t.TITULO)}</h4>
+            const vazio = !temLink(t.LINK_TEORIA) && !temLink(t.LINK_EXERCICIOS);
+            return `<div class="material-item${vazio ? " is-empty" : ""}">
+                <h4>${tituloHTML(t.TITULO)}</h4>
                 <div class="material-links">
                     ${botao(t.LINK_TEORIA, "Teoria", "fa-solid fa-file-pdf", "btn-available-blue")}
                     ${botao(t.LINK_EXERCICIOS, "Exercícios", "fa-solid fa-list-check", "btn-available-teal")}
@@ -693,37 +388,63 @@
         function provasHTML(p) {
             if (!p || !p.LISTAS || !p.LISTAS.length) return "";
             const botoes = p.LISTAS.map(l => botao(l.LINK, l.TITULO, "fa-solid fa-list-check", "btn-available-teal")).join("\n");
-            return `<div class="info-box box-blue">
-                <div class="box-title"><i class="fa-solid fa-list-check"></i> ${esc(p.TITULO_CAIXA || "Listas de Revisão")}</div>
+            return `<div class="block">
+                <div class="block-head">
+                    <div class="block-title"><i class="fa-solid fa-list-check" aria-hidden="true"></i> ${esc(p.TITULO_CAIXA || "Listas de Revisão")}</div>
+                </div>
                 <div class="materials-list">
                     <div class="material-item">
-                        <h4>Provas</h4>
+                        <h4><span>Provas</span></h4>
                         <div class="material-links">${botoes}</div>
                     </div>
                 </div>
             </div>`;
         }
 
+        function contarMateriais(d) {
+            let disponiveis = 0, total = 0;
+            (d.TOPICOS || []).forEach(t => {
+                total += 2;
+                if (temLink(t.LINK_TEORIA)) disponiveis++;
+                if (temLink(t.LINK_EXERCICIOS)) disponiveis++;
+            });
+            if (d.PROVAS && d.PROVAS.LISTAS) {
+                d.PROVAS.LISTAS.forEach(l => { total++; if (temLink(l.LINK)) disponiveis++; });
+            }
+            if (temLink(d.LINK_TEORIA_GERAL)) { total++; disponiveis++; }
+            return { disponiveis, total };
+        }
+
         function disciplinaHTML(d, ativa) {
+            const topicos = d.TOPICOS || [];
+            const n = contarMateriais(d);
             const teoriaGeral = temLink(d.LINK_TEORIA_GERAL)
-                ? `<div style="margin-bottom: 20px;">
-                       <a href="${esc(d.LINK_TEORIA_GERAL.trim())}" target="_blank" rel="noopener" class="link-btn btn-available-blue"><i class="fa-solid fa-file-pdf"></i> Teoria (Todos os Temas)</a>
-                   </div>`
+                ? `<a href="${esc(d.LINK_TEORIA_GERAL.trim())}" target="_blank" rel="noopener" class="link-btn btn-available-blue"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Teoria (todos os temas)</a>`
                 : "";
 
-            return `<section id="${esc(d.ID)}" class="tab-content${ativa ? " active" : ""}" role="tabpanel" aria-labelledby="tab-${esc(d.ID)}">
+            const lista = topicos.length
+                ? `<div class="materials-list">${topicos.map(topicoHTML).join("\n")}</div>`
+                : `<div class="empty-hint"><i class="fa-regular fa-folder-open" aria-hidden="true"></i> Os materiais desta disciplina serão publicados em breve.</div>`;
+
+            return `<section id="${esc(d.ID)}" class="tab-content${ativa ? " active" : ""}" role="tabpanel" aria-labelledby="tab-${esc(d.ID)}" tabindex="0">
                 <div class="subject-header">
-                    <div class="subject-icon" aria-hidden="true">${d.EMOJI || ""}</div>
+                    <div class="subject-icon" aria-hidden="true"><i class="${esc(d.ICONE_ABA || "fa-solid fa-book")}"></i></div>
                     <div class="subject-title">
                         <h2>${esc(d.NOME)}</h2>
                         <p class="subject-desc">${esc(d.DESCRICAO || "")}</p>
+                        <div class="subject-meta">
+                            <span class="pill"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> ${topicos.length} ${topicos.length === 1 ? "tópico" : "tópicos"}</span>
+                            <span class="pill"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> ${n.disponiveis} de ${n.total} materiais disponíveis</span>
+                        </div>
                     </div>
                 </div>
                 ${provasHTML(d.PROVAS)}
-                <div class="info-box box-gray">
-                    <div class="box-title"><i class="fa-solid fa-layer-group"></i> Materiais por Tópico</div>
-                    ${teoriaGeral}
-                    <div class="materials-list">${(d.TOPICOS || []).map(topicoHTML).join("\n")}</div>
+                <div class="block">
+                    <div class="block-head">
+                        <div class="block-title"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Materiais por tópico</div>
+                        ${teoriaGeral}
+                    </div>
+                    ${lista}
                 </div>
             </section>`;
         }
@@ -732,27 +453,61 @@
             const nav = document.getElementById("tabsNav");
             const conteudo = document.getElementById("tabsContent");
 
-            nav.innerHTML = DISCIPLINAS.map((d, i) => `
-                <button type="button" class="tab-btn${i === 0 ? " active" : ""}" id="tab-${esc(d.ID)}"
-                        role="tab" aria-controls="${esc(d.ID)}" aria-selected="${i === 0}" data-alvo="${esc(d.ID)}">
-                    <i class="${d.ICONE_ABA}" style="font-size: 1.5rem;" aria-hidden="true"></i>
+            // Aba inicial: a indicada na URL (ensino.html#eletromagnetismo) ou a primeira.
+            const hash = decodeURIComponent((location.hash || "").replace(/^#/, ""));
+            let inicial = DISCIPLINAS.findIndex(d => d.ID === hash);
+            if (inicial < 0) inicial = 0;
+
+            nav.innerHTML = DISCIPLINAS.map((d, i) => {
+                const n = contarMateriais(d);
+                return `
+                <button type="button" class="tab-btn${i === inicial ? " active" : ""}" id="tab-${esc(d.ID)}"
+                        role="tab" aria-controls="${esc(d.ID)}" aria-selected="${i === inicial}" tabindex="${i === inicial ? 0 : -1}" data-alvo="${esc(d.ID)}">
+                    <i class="${esc(d.ICONE_ABA || "fa-solid fa-book")}" aria-hidden="true"></i>
                     <span>${esc(d.NOME)}</span>
-                </button>`).join("");
+                    <span class="tab-count" title="Materiais disponíveis">${n.disponiveis}</span>
+                </button>`;
+            }).join("");
 
-            conteudo.innerHTML = DISCIPLINAS.map((d, i) => disciplinaHTML(d, i === 0)).join("\n");
+            conteudo.innerHTML = DISCIPLINAS.map((d, i) => disciplinaHTML(d, i === inicial)).join("\n");
 
-            nav.setAttribute("role", "tablist");
-            nav.addEventListener("click", e => {
-                const btn = e.target.closest(".tab-btn");
-                if (!btn) return;
+            function ativar(btn, focar) {
                 nav.querySelectorAll(".tab-btn").forEach(b => {
                     b.classList.remove("active");
                     b.setAttribute("aria-selected", "false");
+                    b.setAttribute("tabindex", "-1");
                 });
                 conteudo.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
                 btn.classList.add("active");
                 btn.setAttribute("aria-selected", "true");
+                btn.setAttribute("tabindex", "0");
                 document.getElementById(btn.dataset.alvo).classList.add("active");
+                if (focar) btn.focus();
+                if (history.replaceState) history.replaceState(null, "", "#" + btn.dataset.alvo);
+            }
+
+            nav.addEventListener("click", e => {
+                const btn = e.target.closest(".tab-btn");
+                if (btn) ativar(btn, false);
+            });
+
+            // Navegação por teclado entre abas (setas, Home, End).
+            nav.addEventListener("keydown", e => {
+                const btns = Array.from(nav.querySelectorAll(".tab-btn"));
+                const i = btns.indexOf(document.activeElement);
+                if (i < 0) return;
+                let alvo = null;
+                if (e.key === "ArrowDown" || e.key === "ArrowRight") alvo = btns[(i + 1) % btns.length];
+                else if (e.key === "ArrowUp" || e.key === "ArrowLeft") alvo = btns[(i - 1 + btns.length) % btns.length];
+                else if (e.key === "Home") alvo = btns[0];
+                else if (e.key === "End") alvo = btns[btns.length - 1];
+                if (alvo) { e.preventDefault(); ativar(alvo, true); }
+            });
+
+            window.addEventListener("hashchange", () => {
+                const id = decodeURIComponent((location.hash || "").replace(/^#/, ""));
+                const btn = nav.querySelector(`.tab-btn[data-alvo="${CSS.escape(id)}"]`);
+                if (btn && !btn.classList.contains("active")) ativar(btn, false);
             });
         })();
     </script>
